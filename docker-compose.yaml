@@ -21,8 +21,8 @@ services:
     ports:
       - "22314:22313"
     environment:
-      - POSTGRES_CONN="postgres://scilightener:${POSTGRES_PASS}@tenders.postgres:5432/tenders-task?sslmode=disable"
-      - SERVER_ADDRESS="0.0.0.0:22313"
+      - POSTGRES_CONN=postgres://scilightener:${POSTGRES_PASS}@tenders.postgres:5432/tenders-task?sslmode=disable
+      - SERVER_ADDRESS=0.0.0.0:22313
       - ENV=prod
     depends_on:
       - tenders-postgres
