@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "71ba8767-b1e5-4352-bb1a-41f120332098",
+		"name": "tenders-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25308949"
+	},
+	"item": [
+		{
+			"name": "tenders/new",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"test1 tender\",\r\n  \"description\": \"pupupu\",\r\n  \"serviceType\": \"Delivery\",\r\n  \"organizationId\": \"6cbebfeb-4fbd-4b0b-af93-af385cb5cce0\",\r\n  \"creatorUsername\": \"user1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/new",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders/my",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/my?limit=5&offset=0&username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"my"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "serviceType",
+							"value": "Construction",
+							"disabled": true
+						},
+						{
+							"key": "serviceType",
+							"value": "Manufacture",
+							"disabled": true
+						},
+						{
+							"key": "serviceType",
+							"value": "Delivery",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders/status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/8201b92b-80a2-42eb-82aa-de432c4d4fa6/status?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"8201b92b-80a2-42eb-82aa-de432c4d4fa6",
+						"status"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders/status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/8201b92b-80a2-42eb-82aa-de432c4d4fa6/status?status=Published&username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"8201b92b-80a2-42eb-82aa-de432c4d4fa6",
+						"status"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Published"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders/edit",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"test edit tender\",\r\n  \"description\": \"lalala\",\r\n  \"serviceType\": \"Delivery\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/8201b92b-80a2-42eb-82aa-de432c4d4fa6/edit?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"8201b92b-80a2-42eb-82aa-de432c4d4fa6",
+						"edit"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tenders/rollback",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/tenders/8201b92b-80a2-42eb-82aa-de432c4d4fa6/rollback/1?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"tenders",
+						"8201b92b-80a2-42eb-82aa-de432c4d4fa6",
+						"rollback",
+						"1"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bids/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"first bid\",\r\n  \"description\": \"lalala\",\r\n  \"tenderId\": \"8201b92b-80a2-42eb-82aa-de432c4d4fa6\",\r\n  \"authorType\": \"User\",\r\n  \"authorId\": \"5128c85f-4d37-4f6b-a741-0479a66bd245\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/new",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/bids/my",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/my?limit=50&offset=0&username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"my"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "50"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/bids/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/8201b92b-80a2-42eb-82aa-de432c4d4fa6/list?limit=4&offset=0&username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"8201b92b-80a2-42eb-82aa-de432c4d4fa6",
+						"list"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bids/status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6/status?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6",
+						"status"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bids/status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6/status?status=Published&username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6",
+						"status"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Published"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bids/edit",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"lalalala\",\r\n  \"description\": \"lalalladsfldfa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6/edit?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6",
+						"edit"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bids/rollback",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://5.42.100.122:22314/api/bids/33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6/rollback/2?username=user1",
+					"protocol": "http",
+					"host": [
+						"5",
+						"42",
+						"100",
+						"122"
+					],
+					"port": "22314",
+					"path": [
+						"api",
+						"bids",
+						"33227012-8abe-4c0e-8ac1-f5f2d9cdd2c6",
+						"rollback",
+						"2"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
