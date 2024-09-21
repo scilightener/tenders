@@ -59,7 +59,9 @@ func parseRollbackInputs(tenderID string, version string) (uuid.UUID, int, error
 	return tID, ver, nil
 }
 
-func (t *Svc) getVersionedByTenderIDVersion(ctx context.Context, tenderID uuid.UUID, version int) (*tender.Versioned, error) {
+func (t *Svc) getVersionedByTenderIDVersion(
+	ctx context.Context, tenderID uuid.UUID, version int,
+) (*tender.Versioned, error) {
 	log := t.logger.With("comp", "service.tendrsvc.getVersionedByTenderIDVersion")
 
 	tndrv, err := t.tenderVRepo.GetByTenderIDVersion(ctx, tenderID, version)

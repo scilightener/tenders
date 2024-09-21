@@ -3,6 +3,7 @@ package bid
 import (
 	"context"
 	"fmt"
+
 	"github.com/google/uuid"
 
 	"tenders-management/internal/model/domain/bid"

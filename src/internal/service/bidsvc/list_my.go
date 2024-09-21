@@ -39,16 +39,11 @@ func (s *Svc) getBidsByUserOrOrganizationResponsible(
 ) ([]*bid.Bid, error) {
 	log := s.logger.With("comp", "service.bidsvc.getBidsByUserOrOrganizationResponsible")
 	userInfo := api.UserInfo(ctx)
-	//orgRespInfo := api.OrgRespInfo(ctx)
 	var (
 		userID uuid.UUID
 		bids   []*bid.Bid
 		err    error
 	)
-	//if userInfo.IsResponsible {
-	//	userID = orgRespInfo.OrganizationID
-	//	bids, err = s.bidRepo.GetByOrganizationID(ctx, userID, limit, offset)
-	//} else {
 	userID = userInfo.UserID
 	user, err := s.getEmployeeByID(ctx, userID)
 	if err != nil {
@@ -57,7 +52,6 @@ func (s *Svc) getBidsByUserOrOrganizationResponsible(
 	}
 	userID = user.ID()
 	bids, err = s.bidRepo.GetByUserID(ctx, userID, limit, offset)
-	//}
 
 	if errors.Is(err, bid.ErrNotFound) {
 		log.Info("bids not found", "userID", userID)

@@ -2,6 +2,7 @@ package organization
 
 import (
 	"errors"
+
 	"tenders-management/internal/model/domain"
 )
 

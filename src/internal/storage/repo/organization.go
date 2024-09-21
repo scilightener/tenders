@@ -2,8 +2,9 @@ package repo
 
 import (
 	"context"
-	"github.com/google/uuid"
 	"tenders-management/internal/model/domain/organization"
+
+	"github.com/google/uuid"
 )
 
 type Organization interface {

@@ -3,8 +3,9 @@ package bidsvc
 import (
 	"context"
 	"errors"
-	"github.com/google/uuid"
 	"tenders-management/internal/model/domain/bid"
+
+	"github.com/google/uuid"
 
 	"tenders-management/internal/lib/api/msg"
 	"tenders-management/internal/lib/logger/sl"

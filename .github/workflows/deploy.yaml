@@ -1,0 +1,46 @@
+name: deploy
+
+on:
+  workflow_run:
+    workflows: ["lint"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOST: root@${{ secrets.HOST }}
+      DEPLOY_DIRECTORY: /root/apps/tenders-management
+      ENV_FILE_PATH: /root/apps/tenders-management/.env
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure ssh
+        run: mkdir -p ~/.ssh && touch ~/.ssh/known_hosts && ssh-keyscan -p ${{ secrets.REMOTE_SSH_PORT }} -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: apt-get update
+        run: sudo apt-get update
+      - name: Install rsync
+        run: sudo apt-get install -y ssh rsync
+      - name: Deploy to remote server
+        run: |
+          echo "$DEPLOY_SSH_KEY" > deploy_key.pem
+          chmod 600 deploy_key.pem
+          ssh -i deploy_key.pem -p ${{ secrets.REMOTE_SSH_PORT }} -o StrictHostKeyChecking=no ${{ env.HOST }} "mkdir -p ${{ env.DEPLOY_DIRECTORY }}"
+          rsync -avz -e 'ssh -i deploy_key.pem -p ${{ secrets.REMOTE_SSH_PORT }} -o StrictHostKeyChecking=no' --exclude='.git' ./ ${{ env.HOST }}:${{ env.DEPLOY_DIRECTORY }}
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      - name: Create environment file on server
+        run: |
+          ssh -i deploy_key.pem -p ${{ secrets.REMOTE_SSH_PORT }} -o StrictHostKeyChecking=no ${{ env.HOST }} "\
+          touch ${{ env.ENV_FILE_PATH }} && \
+          chmod 600 ${{ env.ENV_FILE_PATH }} && \
+          echo 'POSTGRES_PASS=${{ secrets.POSTGRES_PASS }}' > ${{ env.ENV_FILE_PATH }}"
+      - name: Start application
+        run: |
+          ssh -i deploy_key.pem -p ${{ secrets.REMOTE_SSH_PORT }} -o StrictHostKeyChecking=no ${{ env.HOST }} "\
+          cd ${{ env.DEPLOY_DIRECTORY }} && \
+          docker-compose -f docker-compose.yaml stop tenders-api && \
+          docker-compose -f docker-compose.yaml rm -f tenders-api && \
+          docker-compose -f docker-compose.yaml up -d --build"

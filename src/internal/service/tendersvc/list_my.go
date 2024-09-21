@@ -28,7 +28,7 @@ func (t *Svc) ListMy(ctx context.Context, lim, off string) ([]dto.Tender, error)
 	tenders, err := t.tenderRepo.GetByCreatorID(ctx, creatorID, limit, offset)
 	if errors.Is(err, tender.ErrNotFound) {
 		log.Info("tenders not found", sl.Err(err))
-		return nil, tender.ErrNotFound
+		return []dto.Tender{}, nil
 	} else if err != nil {
 		log.Error("error listing tenders", sl.Err(err))
 		return nil, service.ErrUnknownError

@@ -1,3 +1,4 @@
+//nolint:dupl // because they're just the same logic, but with different entities
 package bid
 
 import (
@@ -19,10 +20,6 @@ func (r Repo) GetByOrganizationID(ctx context.Context, orgID uuid.UUID, limit, o
 		return nil, fmt.Errorf("%s: %w", comp, err)
 	}
 	defer rows.Close()
-
-	//if !rows.Next() {
-	//	return nil, organization.ErrOrganizationNotFound
-	//}
 
 	var bs []*bid.Bid
 	for rows.Next() {

@@ -36,7 +36,8 @@ func New(
 	requiredUsernameAuthRouter.Handle("GET /tenders", tender.NewListHandler(svcTender, logger))
 	requiredUsernameAuthRouter.Handle("GET /tenders/my", tender.NewListMyHandler(svcTender, logger))
 	requiredUsernameAuthRouter.Handle("GET /tenders/{tenderID}/status", tender.NewGetStatusHandler(svcTender, logger))
-	requiredUsernameAuthRouter.Handle("PUT /tenders/{tenderID}/status", tender.NewEditStatusTenderHandler(svcTender, logger))
+	requiredUsernameAuthRouter.Handle("PUT /tenders/{tenderID}/status",
+		tender.NewEditStatusTenderHandler(svcTender, logger))
 	requiredUsernameAuthRouter.Handle("PATCH /tenders/{tenderID}/edit", tender.NewEditTenderHandler(svcTender, logger))
 	requiredUsernameAuthRouter.Handle("PUT /tenders/{tenderID}/rollback/{version}",
 		tender.NewRollbackTenderHandler(svcTender, logger))

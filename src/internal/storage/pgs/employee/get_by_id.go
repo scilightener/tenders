@@ -3,8 +3,9 @@ package employee
 import (
 	"context"
 	"fmt"
-	"github.com/google/uuid"
 	"tenders-management/internal/model/domain/employee"
+
+	"github.com/google/uuid"
 )
 
 func (r Repo) GetByID(ctx context.Context, id uuid.UUID) (*employee.Employee, error) {

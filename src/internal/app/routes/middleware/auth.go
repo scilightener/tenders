@@ -70,6 +70,7 @@ func NewAuthorizationMiddleware(
 	}
 }
 
+//nolint:gocognit
 func NewRequiredAuthorizationMiddleware(
 	logger *slog.Logger, emplRepo repo.Employee, respRepo repo.OrganizationResponsible,
 ) Middleware {

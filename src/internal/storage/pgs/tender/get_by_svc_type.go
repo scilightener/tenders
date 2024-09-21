@@ -20,10 +20,6 @@ func (r Repo) GetPublishedBySvcType(
 		return nil, fmt.Errorf("%s: %w", comp, err)
 	}
 
-	if !tenders.Next() {
-		return nil, tender.ErrNotFound
-	}
-
 	var ts []*tender.Tender
 	for tenders.Next() {
 		var trow tenderRow

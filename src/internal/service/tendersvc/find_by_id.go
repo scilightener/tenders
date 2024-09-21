@@ -3,9 +3,10 @@ package tendersvc
 import (
 	"context"
 	"errors"
-	"github.com/google/uuid"
 	"tenders-management/internal/model/domain/tender"
 	"tenders-management/internal/service"
+
+	"github.com/google/uuid"
 
 	"tenders-management/internal/lib/api/msg"
 	"tenders-management/internal/lib/logger/sl"

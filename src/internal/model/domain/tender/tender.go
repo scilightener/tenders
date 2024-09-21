@@ -82,7 +82,7 @@ func (t *Tender) Name() string {
 }
 
 func (t *Tender) SetName(name string) error {
-	if len(t.name) > 100 {
+	if len(name) > 100 {
 		return ErrNameTooLong
 	}
 	t.name = name
@@ -94,7 +94,7 @@ func (t *Tender) Description() string {
 }
 
 func (t *Tender) SetDescription(description string) error {
-	if len(t.description) > 500 {
+	if len(description) > 500 {
 		return ErrDescriptionTooLong
 	}
 	t.description = description

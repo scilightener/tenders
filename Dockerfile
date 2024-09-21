@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine as init
+FROM golang:1.22.7-alpine as init
 
 WORKDIR /app
 

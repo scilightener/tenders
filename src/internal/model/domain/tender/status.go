@@ -10,6 +10,8 @@ func (s status) canTransitTo(newStatus status) bool {
 		return newStatus == StatusPublished || newStatus == StatusClosed
 	case StatusPublished:
 		return newStatus == StatusClosed
+	case StatusClosed:
+		return false
 	default:
 		return false
 	}

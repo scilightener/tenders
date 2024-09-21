@@ -1,8 +1,9 @@
 package organization
 
 import (
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 // Organization represents an organization (legal entity).

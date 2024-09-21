@@ -2,8 +2,9 @@ package tendersvc
 
 import (
 	"context"
-	"github.com/google/uuid"
 	"tenders-management/internal/service"
+
+	"github.com/google/uuid"
 
 	"tenders-management/internal/lib/api"
 	"tenders-management/internal/lib/api/msg"

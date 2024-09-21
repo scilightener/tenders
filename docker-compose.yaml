@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  tenders-postgres:
+    image: postgres:alpine
+    hostname: tenders.postgres
+    ports:
+      - "22414:5432"
+    environment:
+      - POSTGRES_USER=scilightener
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+      - POSTGRES_DB=tenders-task
+    networks:
+      - app_network
+
+  tenders-api:
+    image: tenders-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "22314:22313"
+    environment:
+      - POSTGRES_CONN="postgres://scilightener:${POSTGRES_PASS}@tenders.postgres:5432/tenders-task?sslmode=disable"
+      - SERVER_ADDRESS="0.0.0.0:22313"
+      - ENV=prod
+    depends_on:
+      - tenders-postgres
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.11.0.0/16
